@@ -9,6 +9,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 @Service
 public class AutorServicio {
@@ -17,7 +18,7 @@ public class AutorServicio {
     AutorRepositorio autorRepositorio;
 
     @Transactional
-    public void crearAutor(String nombre) throws MiException {
+    public void crearAutor(String nombre  ) throws MiException {
 
         validar(nombre);
         
@@ -30,10 +31,11 @@ public class AutorServicio {
 
     public List<Autor> listarAutores() {
 
+                System.out.println("ESTOY EN LISTAR AUTORES---------------------------------------------------***************************************************");
         List<Autor> autores = new ArrayList();
 
         autores = autorRepositorio.findAll();
-
+ System.out.println("ESTOY DESPUES LISTAR AUTORES---------------------------------------------------***************************************************");
         return autores;
     }
 

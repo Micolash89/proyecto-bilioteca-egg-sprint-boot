@@ -35,6 +35,12 @@ public class EditorialService {
 
         editoriales = editorialRespositorio.findAll();
 
+        
+        System.out.println("---------------------------------------------------***************************************************");
+        editoriales.forEach((e)->System.out.println(e));
+        
+        
+        
         return editoriales;
     }
 
