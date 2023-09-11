@@ -2,12 +2,19 @@
 <html  xmlns:th="http://www.thymeleaf.org/">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registro de Libros</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     </head>
     <body>
+            <header th:replace="/fragments/header :: header"></header>
+        <div class="container">
+            <h1 class="text-center">REGISTRAR LIBRO</h1>
+        </div>
+        
         <div>
             <form action="/libro/registro" method="POST" enctype="multipart/form-data">
-                <div>
+                <!--div>
                     <label>Cargar Libro</label> 
                     <input type="number" name="isbn" placeholder="ISBN">
                 </div>
@@ -17,13 +24,45 @@
 
                 <div>
                     <input type="number" name="ejemplares" placeholder="Cantidad de Ejemplares">
+                </div-->
+
+                <div class="container input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">ISBN</span>
+                    <input type="text" name="isbn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="container input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Titulo</span>
+                    <input type="text" name="titulo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="container input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Cant. Ejemplares</span>
+                    <input type="text" name="ejemplares" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
 
-                <div>
+
+                <div class="container mb-3">
+                    <label for="formFileDisabled" class="form-label"></label>
+                    <input name="archivo" class="form-control" type="file" id="formFileDisabled" >
+                </div>
+
+
+                <!--div>
                     <input type="file" name="archivo">
+                </div-->
+
+                <div class="container">
+
+                    <select name="idAutor" class="form-select" aria-label="Default select example">
+                        <option selected>Seleccionar Autor</option>
+                        <option th:each="autor:${autores}"
+                                th:value="${autor.id}"
+                                th:text="${autor.nombre}"
+                                />
+                    </select>
                 </div>
 
-                <div>
+
+                <!--div>
 
                     <select name="idAutor">
 
@@ -35,10 +74,10 @@
                                 />
                     </select>
 
-                </div>
-                <div>
-                    <select name="idEditorial">
-                        <option>Seleccionar Editorial</option>
+                </div-->
+                <div class="container">
+                    <select name="idEditorial" class="form-select" aria-label="Default select example">
+                        <option selected>Seleccionar Editorial</option>
                         <option th:each="editorial :${editoriales}"
                                 th:value="${editorial.id}"
                                 th:text="${editorial.nombre}"
@@ -46,7 +85,11 @@
                     </select>
                 </div>
 
-                <button>Guardar</button>
+                <!--button>Guardar</button-->
+
+                <div class="container d-grid gap-2">
+                    <button class="btn btn-primary" >Guardar</button>
+                </div>
             </form>
         </div>
 
@@ -62,7 +105,7 @@
                 <p th:text="${exito}"></p>
             </div>
         </div>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     </body>
 
 </html>

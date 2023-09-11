@@ -8,12 +8,18 @@
     </head>
     <body>
         
-         <div th:if="${exito != null}">
+        <!--head th:replace= "/fragments/head :: head" </head-->
+        
+        <header th:replace="/fragments/header :: header"></header>
+
+        <div class="container text-primary" >EGG  la tenes adentro</div>
+
+        <div th:if="${exito != null}">
             <div>
                 <h5>Exito!</h5>
                 <p th:text="${exito}"></p>
             </div>
-        <div class="container text-primary" >EGG  la tenes adentro</div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     </body>
 </html>
