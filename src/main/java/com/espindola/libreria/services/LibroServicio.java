@@ -29,7 +29,10 @@ public class LibroServicio {
 
     @Transactional
     public void crearLibro(Long isbn, String titulo, Integer Ejemplares, String idAutor, String idEditorial) throws MiException {
-
+        
+        //agregar optional a los autor/editorial/ y el libro
+        
+        
         validar(isbn, titulo, idAutor, idEditorial, Ejemplares);
 
         Autor autor = autorRepositorio.findById(idAutor).get();
@@ -53,11 +56,11 @@ public class LibroServicio {
 
     public List<Libro> listarLibro() {
 
-        List<Libro> libro = new ArrayList<>();
-        libro = libroRepositorio.findAll();
+        List<Libro> libros = new ArrayList<>();
+        libros = libroRepositorio.findAll();
         //List<Libro> libro = libroRepositorio.findAll(); PROBAR
         //return libroRepositorio.findAll();
-        return libro;
+        return libros;
     }
 
     public void modificaLibro(Long isbn, String titulo, String idAutor, String idEditorial, Integer ejemplares) throws MiException {

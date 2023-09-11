@@ -5,9 +5,12 @@
  */
 package com.espindola.libreria.controladores;
 
+import com.espindola.libreria.entidades.Autor;
+import com.espindola.libreria.entidades.Editorial;
 import com.espindola.libreria.excepciones.MiException;
 import com.espindola.libreria.services.AutorServicio;
 import com.espindola.libreria.services.EditorialService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -46,5 +49,16 @@ public class EditorialControlador {
         }
 
         return "index.html";
+    }
+    
+    @GetMapping("/lista")
+    public String listar(ModelMap modelo){
+    
+        List<Editorial> editoriales = editorialServicio.listarEditorial();
+        
+        
+        modelo.addAttribute("editoriales", editoriales);
+        
+        return "editorial_list.html";
     }
 }

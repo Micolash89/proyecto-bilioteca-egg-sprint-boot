@@ -18,10 +18,10 @@ public class AutorServicio {
     AutorRepositorio autorRepositorio;
 
     @Transactional
-    public void crearAutor(String nombre  ) throws MiException {
+    public void crearAutor(String nombre) throws MiException {
 
         validar(nombre);
-        
+
         Autor autor = new Autor();
 
         autor.setNombre(nombre);
@@ -31,16 +31,16 @@ public class AutorServicio {
 
     public List<Autor> listarAutores() {
 
-                System.out.println("ESTOY EN LISTAR AUTORES---------------------------------------------------***************************************************");
+        System.out.println("ESTOY EN LISTAR AUTORES---------------------------------------------------***************************************************");
         List<Autor> autores = new ArrayList();
 
         autores = autorRepositorio.findAll();
- System.out.println("ESTOY DESPUES LISTAR AUTORES---------------------------------------------------***************************************************");
+        System.out.println("ESTOY DESPUES LISTAR AUTORES---------------------------------------------------***************************************************");
         return autores;
     }
 
-    public void modificarAutor(String nombre, String id)throws MiException {
-        
+    public void modificarAutor(String nombre, String id) throws MiException {
+
         validar(nombre);
 
         Optional<Autor> respuesta = autorRepositorio.findById(id);
@@ -57,13 +57,18 @@ public class AutorServicio {
 
     }
 
-     private void validar(String nombre) throws MiException {
+    public Autor getOne(String id) {
+        //return autorRepositorio.getOne(id);
+        return autorRepositorio.findById(id).get();
+    }
+
+    private void validar(String nombre) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
 
             throw new MiException("el nombre no puede estar vacio");
 
         }
-     }
-    
+    }
+
 }

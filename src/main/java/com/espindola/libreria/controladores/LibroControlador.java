@@ -2,6 +2,7 @@ package com.espindola.libreria.controladores;
 
 import com.espindola.libreria.entidades.Autor;
 import com.espindola.libreria.entidades.Editorial;
+import com.espindola.libreria.entidades.Libro;
 import com.espindola.libreria.excepciones.MiException;
 import com.espindola.libreria.services.AutorServicio;
 import com.espindola.libreria.services.EditorialService;
@@ -64,5 +65,17 @@ public class LibroControlador {
             return "libro_form.html";
         }
         return "index.html";
+    }
+    
+    
+    @GetMapping("/lista")
+    public String listar(ModelMap modelo){
+    
+        List<Libro> libros = libroServicio.listarLibro();
+        
+        
+        modelo.addAttribute("libros", libros);
+        
+        return "libro_list.html";
     }
 }
