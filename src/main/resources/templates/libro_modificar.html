@@ -4,51 +4,29 @@
     <body>
             <header th:replace="/fragments/header :: header"></header>
         <div class="container">
-            <h1 class="text-center">REGISTRAR LIBRO</h1>
+            <h1 class="text-center">MODIFICAR LIBRO</h1>
         </div>
         
         <div>
-            <form action="/libro/registro" method="POST" enctype="multipart/form-data">
-                <!--div>
-                    <label>Cargar Libro</label> 
-                    <input type="number" name="isbn" placeholder="ISBN">
-                </div>
-                <div>
-                    <input type="text" name="titulo" placeholder="Titulo del Libro">
-                </div>
-
-                <div>
-                    <input type="number" name="ejemplares" placeholder="Cantidad de Ejemplares">
-                </div-->
-
+            <form th:action="@{/libro/modificar/__${libro.isbn}__}" method="POST" enctype="multipart/form-data">
+              
                 <div class="container input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">ISBN</span>
-                    <input type="number" name="isbn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input disabled  name="isbn" th:value="${isbn}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="container input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Titulo</span>
-                    <input type="text" name="titulo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input th:value="${libro.titulo}" type="text" name="titulo"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="container input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Cant. Ejemplares</span>
-                    <input type="number" name="ejemplares" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="number" name="ejemplares" th:value="${libro.ejemplares}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
 
-
-                <div class="container mb-3">
-                    <label for="formFileDisabled" class="form-label"></label>
-                    <input name="archivo" class="form-control" type="file" id="formFileDisabled" >
-                </div>
-
-
-                <!--div>
-                    <input type="file" name="archivo">
-                </div-->
-
-                <div class="container my-3">
+                <div class="container">
 
                     <select name="idAutor" class="form-select" aria-label="Default select example">
-                        <option selected>Seleccionar Autor</option>
+                        <option selected th:text="${libro.autor.nombre}" ></option>
                         <option th:each="autor:${autores}"
                                 th:value="${autor.id}"
                                 th:text="${autor.nombre}"
@@ -56,23 +34,9 @@
                     </select>
                 </div>
 
-
-                <!--div>
-
-                    <select name="idAutor">
-
-                        <option >Seleccionar Autor</option>
-
-                        <option th:each="autor:${autores}"
-                                th:value="${autor.id}"
-                                th:text="${autor.nombre}"
-                                />
-                    </select>
-
-                </div-->
-                <div class="container">
+                <div class="container my-3">
                     <select name="idEditorial" class="form-select" aria-label="Default select example">
-                        <option selected>Seleccionar Editorial</option>
+                        <option selected th:text="${libro.editorial.nombre}" ></option>
                         <option th:each="editorial :${editoriales}"
                                 th:value="${editorial.id}"
                                 th:text="${editorial.nombre}"
@@ -80,10 +44,8 @@
                     </select>
                 </div>
 
-                <!--button>Guardar</button-->
-
                 <div class="container d-grid gap-2">
-                    <button class="btn btn-primary" >Guardar</button>
+                    <button class="btn btn-primary" type="submit" >Modificar</button>
                 </div>
             </form>
         </div>

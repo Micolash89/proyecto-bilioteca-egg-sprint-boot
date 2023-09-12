@@ -10,18 +10,22 @@ and open the template in the editor.
         <header th:replace="/fragments/header :: header"></header>
         <div class="container">
 
-            <h1 class="text-center">REGISTRO DE AUTOR</h1>
-            <form action="/autor/registro" method="POST">
+            <h1 class="text-center">MODIFICAR DE AUTOR</h1>
+            <form th:action="@{/editorial/modificar/__${editorial.id}__}" method="POST">
                 <!--input type="text" name="nombre"  >
                 <button type="submit">guardar</button-->
-
+                
+                <div class="container input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Id</span>
+                   <input disabled  type="text" name="id" th:value="${id}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
                 <div class="container input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
-                    <input type="text" name="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <input type="text" name="nombre" th:value="${editorial.nombre}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
 
                 <div class="container d-grid gap-2">
-                    <button class="btn btn-primary" type="submit" >Guardar</button>
+                    <button class="btn btn-primary" type="submit" >Actualizar</button>
                 </div>
 
             </form>

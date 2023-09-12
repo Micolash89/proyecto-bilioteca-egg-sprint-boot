@@ -62,9 +62,15 @@ public class EditorialService {
 
     }
 
+    public Editorial getOne(String id){
+    
+        return editorialRespositorio.findById(id).get();
+    
+    }
+    
     private void validar(String nombre) throws MiException {
 
-        if (nombre.isEmpty() || nombre == null) {
+        if (nombre.trim().isEmpty() ||nombre == null) {
 
             throw new MiException("el nombre no puede estar vacio");
 

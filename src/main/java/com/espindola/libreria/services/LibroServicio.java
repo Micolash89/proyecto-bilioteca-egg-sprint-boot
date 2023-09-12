@@ -63,6 +63,7 @@ public class LibroServicio {
         return libros;
     }
 
+    @Transactional
     public void modificaLibro(Long isbn, String titulo, String idAutor, String idEditorial, Integer ejemplares) throws MiException {
 
         validar(isbn, titulo, idAutor, idEditorial, ejemplares);
@@ -103,6 +104,12 @@ public class LibroServicio {
         }
 
     }
+    
+    public Libro getOne(Long id){
+        
+        return libroRepositorio.findById(id).get();
+                
+    }
 
     private void validar(Long isbn, String titulo, String idAutor, String idEditorial, Integer ejemplares) throws MiException {
 
@@ -114,15 +121,15 @@ public class LibroServicio {
             throw new MiException("los ejemplares no puede estar vacio");
         }
 
-        if ( titulo == null||titulo.isEmpty()) {
+        if ( titulo == null||titulo.trim().isEmpty()) {
             throw new MiException("el titulo no puede estar vacio");
         }
 
-        if (idAutor == null||idAutor.isEmpty() ) {
+        if (idAutor == null||idAutor.trim().isEmpty() ) {
             throw new MiException("el autor no puede estar vacio");
         }
 
-        if (idEditorial == null || idEditorial.isEmpty()) {
+        if (idEditorial == null || idEditorial.trim().isEmpty()) {
             throw new MiException("la editorial no puede estar vacio");
         }
     }

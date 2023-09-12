@@ -5,26 +5,23 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html xmlns:th="http://www.thymeleaf.org/">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    </head>
+    <head th:replace="/fragments/head::head"></head>
     <body>
         <header th:replace="/fragments/header :: header"></header>
         
-        
-        <table>
+        <div class="container">
+            
+        <table class="table border-primary-subtle ">
             
             <thead>
-                <tr>
+                <tr class="table-primary">
                     <th>Id</th>
                     <th>Titulo</th>
                     <th>Ejemplares</th>
                     <th>Alta</th>
                     <th>Autor</th>
                     <th>Editorial</th>
+                    <th>Modificar</th>
                 </tr>
             </thead>
             <tbody th:each="libro : ${libros}">
@@ -36,12 +33,16 @@ and open the template in the editor.
                     <td th:text="${libro.alta}"></td>
                     <td th:text="${libro.autor.nombre}"></td>
                     <td th:text="${libro.editorial.nombre}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/libro/modificar/__${libro.isbn}__}" title="modificar"> <i class="bi bi-pen-fill"></i> </a>
+                    </td>
                 </tr>
                 
             </tbody>
             
         </table>
         
+        </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
     </body>
 </html>

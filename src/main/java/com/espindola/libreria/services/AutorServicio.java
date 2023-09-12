@@ -58,13 +58,15 @@ public class AutorServicio {
     }
 
     public Autor getOne(String id) {
+        
         //return autorRepositorio.getOne(id);
         return autorRepositorio.findById(id).get();
+        
     }
 
     private void validar(String nombre) throws MiException {
 
-        if (nombre.isEmpty() || nombre == null) {
+        if (nombre.trim().isEmpty() || nombre == null) {
 
             throw new MiException("el nombre no puede estar vacio");
 
