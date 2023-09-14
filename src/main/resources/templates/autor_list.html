@@ -5,37 +5,37 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html xmlns:th="http://www.thymeleaf.org/">
- <head th:replace="/fragments/head::head"></head>
+    <head th:replace="/fragments/head::head"></head>
     <body>
         <header th:replace="/fragments/header :: header"></header>
         <div th:replace="/fragments/exito_error :: div"></div>
-        
+
         <div class="container mb-4 ">
-            
-        <table class="table border-primary-subtle ">
-            
-            <thead>
-                <tr class="table-primary  ">
-                    <th >Id del autor</th>
-                    <th>nombre del autor</th>
-                    <th>modificar</th>
-                </tr>
-            </thead>
-            <tbody th:each="autor : ${autores}">
-                
-                <tr>
-                    <td th:text="${autor.id}"></td>
-                    <td th:text="${autor.nombre}"></td>
-                    <td>
-                        <a class="btn btn-primary" th:href="@{/autor/modificar/__${autor.id}__}" title="modificar"> <i class="bi bi-pen-fill"></i> </a>
-                    </td>
-                </tr>
-                
-            </tbody>
-            
-        </table>
-        
+
+            <table class="table border-primary-subtle ">
+
+                <thead>
+                    <tr class="table-primary  ">
+                        <th >Id del autor</th>
+                        <th>nombre del autor</th>
+                        <th>modificar</th>
+                    </tr>
+                </thead>
+                <tbody th:each="autor : ${autores}">
+
+                    <tr>
+                        <td th:text="${autor.id}"></td>
+                        <td th:text="${autor.nombre}"></td>
+                        <td>
+                            <a class="btn btn-primary" th:href="@{/autor/modificar/__${autor.id}__}" title="modificar"> <i class="bi bi-pen-fill"></i> </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
         </div>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
+        <footer th:replace="/fragments/footer :: footer"></footer>
     </body>
 </html>

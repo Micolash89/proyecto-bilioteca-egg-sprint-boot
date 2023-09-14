@@ -31,11 +31,11 @@ public class AutorServicio {
 
     public List<Autor> listarAutores() {
 
-        System.out.println("ESTOY EN LISTAR AUTORES---------------------------------------------------***************************************************");
+        
         List<Autor> autores = new ArrayList();
 
         autores = autorRepositorio.findAll();
-        System.out.println("ESTOY DESPUES LISTAR AUTORES---------------------------------------------------***************************************************");
+        
         return autores;
     }
 

@@ -64,7 +64,8 @@ public class LibroServicio {
     }
 
     @Transactional
-    public void modificaLibro(Long isbn, String titulo, String idAutor, String idEditorial, Integer ejemplares) throws MiException {
+    public void modificaLibro(Long isbn, String titulo, String idAutor,
+            String idEditorial, Integer ejemplares) throws MiException {
 
         validar(isbn, titulo, idAutor, idEditorial, ejemplares);
 
@@ -107,7 +108,8 @@ public class LibroServicio {
     
     public Libro getOne(Long id){
         
-        return libroRepositorio.findById(id).get();
+        return libroRepositorio.getOne(id);
+        //return libroRepositorio.findById(id).get();
                 
     }
 

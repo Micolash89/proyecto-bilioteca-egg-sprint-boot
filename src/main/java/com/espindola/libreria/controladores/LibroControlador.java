@@ -32,10 +32,7 @@ public class LibroControlador {
 
     @GetMapping("/registrar")
     public String registrar(ModelMap modelo) {
-        //public String registrar() {
-
-        System.out.println("---------------------------------------------------***************************************************");
-
+        
         List<Autor> autores = autorServicio.listarAutores();
         List<Editorial> editoriales = editorialServicio.listarEditorial();
 
@@ -61,7 +58,7 @@ public class LibroControlador {
 
             modelo.addAttribute("autores", autores);
             modelo.addAttribute("editoriales", editoriales);
-            //Logger.getLogger(LibroControlador.class.getName()).log(Level.SEVERE, null, ex);
+          
             return "libro_form.html";
         }
         return "index.html";
