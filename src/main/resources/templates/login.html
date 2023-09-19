@@ -11,6 +11,8 @@ and open the template in the editor.
 
         <div class="container my-5 w-100">
 
+            <h1 th:if="${session.usuariosession == null}" >no hay usuario </h1>
+            
             <main class="form-signin w-100 m-auto">
                 <form th:action="@{/logincheck}" method="POST">
 

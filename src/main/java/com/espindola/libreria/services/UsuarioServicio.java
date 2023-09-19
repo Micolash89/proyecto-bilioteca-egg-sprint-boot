@@ -101,6 +101,12 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
+    public List<Usuario> getAll() {
+
+        return usuarioRepositorio.findAll();
+
+    }
+
     private void validar(String nombre, String email, String password, String password2) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
@@ -141,6 +147,20 @@ public class UsuarioServicio implements UserDetailsService {
 
         } else {
             return null;
+        }
+
+    }
+
+    @Transactional
+    public void cambiarRol(String id) {
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+
+            Usuario usuario = respuesta.get();
+
+            usuario.setRol((usuario.getRol().equals(Rol.USER)) ? Rol.ADMIN : Rol.USER);
+
         }
 
     }

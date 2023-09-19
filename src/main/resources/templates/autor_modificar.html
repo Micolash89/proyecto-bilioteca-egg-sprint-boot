@@ -10,7 +10,10 @@ and open the template in the editor.
         <header th:replace="/fragments/header :: header"></header>
         <div class="container">
 
+            
+          
             <h1 class="text-center">MODIFICAR DE AUTOR</h1>
+            
             <form th:action="@{/autor/modificar/__${autor.id}__}" method="POST">
                
                 <div class="container input-group mb-3">

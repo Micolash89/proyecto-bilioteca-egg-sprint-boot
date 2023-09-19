@@ -103,13 +103,14 @@ public class PortalControlador {
         try {
             usuarioServicio.actualizar(id, nombre, email, password, password2, archivo);
             modelo.put("exito", "se puedo guardar el usuario correctamente");
-          
+
             return "redirect:/inicio";
         } catch (MiException e) {
             modelo.put("error", e.getMessage());
 
-            modelo.put("nombre", nombre);
-            modelo.put("email", email);
+            Usuario usuario = usuarioServicio.getOne(id);
+            
+            modelo.put("usuario", usuario);
 
             return "usuario_modificar.html";
 
