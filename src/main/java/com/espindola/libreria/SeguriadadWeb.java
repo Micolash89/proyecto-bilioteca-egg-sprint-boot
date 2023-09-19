@@ -16,43 +16,51 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 //public class SeguriadadWeb extends WebSecurityConfigurerAdapter {
-public class SeguriadadWeb  {
+public class SeguriadadWeb {
 
-    
     @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SeguridadWeb {
+    @EnableWebSecurity
+    @EnableGlobalMethodSecurity(prePostEnabled = true)
+    public class SeguridadWeb {
 
-   @Autowired
-   public UsuarioServicio usuarioServicio;
+        @Autowired
+        public UsuarioServicio usuarioServicio;
 
-   @Autowired
-   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-       auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
-   }
+        @Autowired
+        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+            auth.userDetailsService(usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
+        }
 
-   @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests()
-                .antMatchers("/admin/*").hasAnyRole("ADMIN")
-                .antMatchers("/css/","/js/","/img/*","/**").permitAll()
-                .and().formLogin()
-                        .loginPage("/login")
-                        .loginProcessingUrl("/logincheck")
-                        .usernameParameter("email")
-                        .passwordParameter("password")
-                        .defaultSuccessUrl("/inicio")
-                        .permitAll()
-                .and().logout()
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/")
-                        .permitAll()
-                .and().csrf()
-                        .disable();
-        return http.build();
+        @Bean
+        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+            http.authorizeHttpRequests()
+                    .antMatchers("/admin/*").hasAnyRole("ADMIN")
+                    // .antMatchers("autor/*","/libro/*","/editorial/*").hasAnyRole("USER")
+                    //.antMatchers("/admin/**").hasRole("ADMIN")
+                    //.antMatchers("/autor/lista", "/libro/lista", "/editorial/lista").hasRole("USER")
+                    /*
+                    .antMatchers("/admin/").hasRole("ADMIN")
+                    .antMatchers("/css/", "/js/", "/img/").permitAll()
+                    .antMatchers("/registrar").permitAll()
+                    .antMatchers("/**").authenticated()
+                     */
+                    .antMatchers("/css/", "/js/", "/img/*", "/**", "/index", "/inicio").permitAll()
+                    .and().formLogin()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/logincheck")
+                    .usernameParameter("email")
+                    .passwordParameter("password")
+                    .defaultSuccessUrl("/inicio")
+                    .permitAll()
+                    .and().logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/")
+                    .permitAll()
+                    .and().csrf()
+                    .disable();
+            return http.build();
+        }
     }
-}
     /*
     
     @Autowired
@@ -84,5 +92,5 @@ public class SeguridadWeb {
                 .permitAll();
 
     }
-*/
+     */
 }

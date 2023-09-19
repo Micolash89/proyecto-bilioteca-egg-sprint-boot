@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
     <head th:replace="/fragments/head::head"></head>
     <body>
         <header th:replace="/fragments/header :: header"></header>
@@ -18,7 +18,7 @@ and open the template in the editor.
                     <tr class="table-primary  ">
                         <th >Id del autor</th>
                         <th>nombre del autor</th>
-                        <th>modificar</th>
+                        <th sec:authorize="hasRole('ADMIN')">modificar</th>
                     </tr>
                 </thead>
                 <tbody th:each="autor : ${autores}">
@@ -26,7 +26,7 @@ and open the template in the editor.
                     <tr>
                         <td th:text="${autor.id}"></td>
                         <td th:text="${autor.nombre}"></td>
-                        <td>
+                        <td sec:authorize="hasRole('ADMIN')">
                             <a class="btn btn-primary" th:href="@{/autor/modificar/__${autor.id}__}" title="modificar"> <i class="bi bi-pen-fill"></i> </a>
                         </td>
                     </tr>

@@ -42,13 +42,11 @@ public class AutorControlador {
 
         return "index.html";
     }
-
     
     @GetMapping("/lista")
     public String listar(ModelMap modelo){
     
         List<Autor> autores = autorServicio.listarAutores();
-        
         
         modelo.addAttribute("autores", autores);
         
@@ -71,6 +69,8 @@ public class AutorControlador {
             modelo.put("exito","se modifico correctamente");
             return "redirect:../lista";
         } catch (MiException ex) {
+             modelo.put("autor",autorServicio.getOne(id));
+        
             modelo.put("error",ex.getMessage());
             return "autor_modificar.html";
         }

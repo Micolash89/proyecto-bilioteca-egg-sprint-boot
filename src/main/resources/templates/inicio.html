@@ -4,13 +4,20 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
-      <head th:replace="/fragments/head :: head"></head>
+<html  xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+    <head th:replace="/fragments/head :: head"></head>
     <body>
-        
-          <header th:replace="/fragments/header :: header"></header>
-        
-        
-            <footer th:replace="/fragments/footer :: footer"></footer>
+
+        <header th:replace="/fragments/header :: header"></header>
+      
+
+            <h1 th:text=" 'Hola de vuelta '+${session.usuariosession.nombre}  " ></h1>
+            
+            <img  th:src="@{/imagen/perfil/__${session.usuariosession.id}__}">
+
+       
+       
+
+        <footer th:replace="/fragments/footer :: footer"></footer>
     </body>
 </html>

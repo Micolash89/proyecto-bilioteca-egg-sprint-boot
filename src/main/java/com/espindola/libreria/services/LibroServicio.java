@@ -123,15 +123,15 @@ public class LibroServicio {
             throw new MiException("los ejemplares no puede estar vacio");
         }
 
-        if ( titulo == null||titulo.trim().isEmpty()) {
+        if ( titulo.trim().isEmpty() || titulo == null  ) {
             throw new MiException("el titulo no puede estar vacio");
         }
 
-        if (idAutor == null||idAutor.trim().isEmpty() ) {
+        if (idAutor.isEmpty() || idAutor == null ) {
             throw new MiException("el autor no puede estar vacio");
         }
 
-        if (idEditorial == null || idEditorial.trim().isEmpty()) {
+        if ( idEditorial.isEmpty()||idEditorial == null ) {
             throw new MiException("la editorial no puede estar vacio");
         }
     }
