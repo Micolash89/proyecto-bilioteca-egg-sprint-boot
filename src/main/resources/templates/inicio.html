@@ -10,8 +10,8 @@ and open the template in the editor.
 
         <header th:replace="/fragments/header :: header"></header>
       
-
             <h1 th:text=" 'Hola de vuelta '+${session.usuariosession.nombre}  " ></h1>
+        <div></div>
             
             <img  th:src="@{/imagen/perfil/__${session.usuariosession.id}__}">
 
