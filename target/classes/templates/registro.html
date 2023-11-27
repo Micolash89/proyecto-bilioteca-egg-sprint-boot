@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html  xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <header th:replace="/fragments/header :: header"></header>
+
+        <div class="container my-5">
+
+            <main class="form-signin w-100 m-auto">
+                <form th:action="@{/registro}" method="POST"  enctype="multipart/form-data">
+
+                    <h1 class="h3 mb-3 fw-normal text-center">REGISTRAR USUARIO</h1>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput1" placeholder="Nombre" name="nombre" th:value="${nombre}">
+                        <label for="floatingInput1">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" th:value="${email}">
+                        <label for="floatingInput">Usuario</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="file" class="form-control" id="floatingInput"  name="archivo">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" name="password" th:value="${password}">
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPassword1" placeholder="Repetir Contraseña" name="password2" th:value="${password2}">
+                        <label for="floatingPassword1">Repetir contraseña</label>
+                    </div>
+
+                    <button class="btn btn-primary w-100 py-2" type="submit">Iniciar Sesion</button>
+
+                </form>
+
+            </main>
+
+        </div>
+
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>

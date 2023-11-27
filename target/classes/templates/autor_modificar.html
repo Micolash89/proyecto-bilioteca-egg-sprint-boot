@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+    <head th:replace="/fragments/head::head"></head>
+    <body>
+        <header th:replace="/fragments/header :: header"></header>
+        <div class="container">
+
+            
+          
+            <h1 class="text-center">MODIFICAR DE AUTOR</h1>
+            
+            <form th:action="@{/autor/modificar/__${autor.id}__}" method="POST">
+               
+                <div class="container input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Id</span>
+                    <input disabled  type="text" name="id" th:value="${id}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="container input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                    <input type="text" name="nombre" th:value="${autor.nombre}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+
+                <div class="container d-grid gap-2">
+                    <button class="btn btn-primary" type="submit" >Actualizar</button>
+                </div>
+
+            </form>
+
+
+
+            <div th:replace="/fragments/exito_error :: div">
+
+            </div>
+        </div>
+        <footer th:replace="/fragments/footer :: footer"></footer>
+    </body>
+</html>

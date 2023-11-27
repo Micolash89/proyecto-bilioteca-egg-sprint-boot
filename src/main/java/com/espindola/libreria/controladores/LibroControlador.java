@@ -101,8 +101,6 @@ public class LibroControlador {
             modelo.addAttribute("autores", autores);
             modelo.addAttribute("editoriales", editoriales);
 
-            
-            
             libroServicio.modificaLibro(isbn, titulo, idAutor, idEditorial, ejemplares);
             
             //modelo.put("exito", "se modifico el libro correctamente");

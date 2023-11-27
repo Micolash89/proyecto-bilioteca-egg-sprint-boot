@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.espindola.libreria.services;
 
 import com.espindola.libreria.entidades.Imagen;
@@ -28,10 +23,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- *
- * @author JAVIER ESPINDOLA
- */
 @Service
 public class UsuarioServicio implements UserDetailsService {
 
@@ -161,6 +152,8 @@ public class UsuarioServicio implements UserDetailsService {
 
             usuario.setRol((usuario.getRol().equals(Rol.USER)) ? Rol.ADMIN : Rol.USER);
 
+            usuarioRepositorio.save(usuario);
+            
         }
 
     }

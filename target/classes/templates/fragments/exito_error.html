@@ -1,0 +1,13 @@
+<div class="container">
+
+    <div th:if="${error != null}" class="alert alert-danger"  role="alert">
+
+        <h5>Error &#128078;</h5>
+        <p th:text="${error}"></p>
+    </div>
+    <div th:if="${exito != null}" class="alert alert-success"  role="alert">
+
+        <h5>Éxito! &#128077;</h5>
+        <p th:text="${exito}"></p>
+    </div>
+</div>
