@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.espindola.libreria.LibreriaApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.777 s - in com.espindola.libreria.LibreriaApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 34.713 s - in com.espindola.libreria.LibreriaApplicationTests
