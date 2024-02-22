@@ -1,4 +1,4 @@
-# Biblioteca Egg - Wqb App
+# Biblioteca Egg - Web App
 
 Este proyecto es una aplicación web desarrollada utilizando el framework Spring, con el uso de Maven para la gestión de dependencias, el patrón de diseño MVC para la organización de la arquitectura, Spring Boot para simplificar la configuración, Thymeleaf como motor de plantillas HTML y Spring Security para la gestión de la seguridad.
 
